@@ -1,10 +1,11 @@
 import React from "react";
 
-const loginContext= React.createContext({
+const LoginContext= React.createContext({
     isLoggedin: false,
     login: (email,password)=>{},
     logout: ()=>{},
-    deleteAccount: (id)=>{}
+    deleteAccount: (id)=>{},
+    addUser: (user)=>{},
 })
 
-export default loginContext
+export default LoginContext

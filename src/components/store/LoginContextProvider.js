@@ -1,12 +1,12 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { Toast } from "primereact/toast";
-import loginContext from "./loginContext"; // Ensure the path is correct
+import LoginContext from "./loginCentext"; 
 
 const LoginContextProvider = ({ children }) => {
   const [isLoggedin, setIsLoggedin] = useState(false);
   const navigate = useNavigate();
-  const toast = useRef(null); // Ref for Toast notifications
+  const toast = useRef(null); 
 
   useEffect(() => {
     const loggedInStatus = localStorage.getItem("isLoggedin");
@@ -29,6 +29,7 @@ const LoginContextProvider = ({ children }) => {
           summary: "Login Successful",
           detail: `Welcome back, ${user.name}!`,
         });
+        localStorage.setItem('loggedinUser',JSON.stringify(user))
       } else {
         toast.current.show({
           severity: "error",
@@ -47,6 +48,7 @@ const LoginContextProvider = ({ children }) => {
 
   const logoutHandler = () => {
     localStorage.removeItem("isLoggedin");
+    localStorage.removeItem('loggedinUser')
     setIsLoggedin(false);
     toast.current.show({
       severity: "info",
@@ -70,19 +72,34 @@ const LoginContextProvider = ({ children }) => {
     });
   };
 
+  const addUserHandler=(user)=>{
+    const usersString = localStorage.getItem("users");
+    const users = usersString ? JSON.parse(usersString) : []
+
+    users.push(user);
+    localStorage.setItem('users',JSON.stringify(users))
+
+    toast.current.show({
+      severity: "success",
+      summary: "Signed up Successful",
+      detail: 'User signed up successfully!',
+    });
+  }
+
   return (
     <>
       <Toast ref={toast} />
-      <loginContext.Provider
+      <LoginContext.Provider
         value={{
           isLoggedin,
           login: loginHandler,
           logout: logoutHandler,
           deleteAccount: deleteAccountHandler,
+          addUser: addUserHandler
         }}
       >
         {children}
-      </loginContext.Provider>
+      </LoginContext.Provider>
     </>
   );
 };

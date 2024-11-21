@@ -1,9 +1,12 @@
 import React from "react";
+import NavBar from "../navbar/Navbar";
 
 const Home=()=>{
 
     return(
-        <h1>Home page</h1>
+        <React.Fragment>
+            <NavBar />
+        </React.Fragment>
     )
 }
 
