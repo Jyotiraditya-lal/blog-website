@@ -72,8 +72,8 @@ const NavBar = () => {
     return (
         <div className="flex justify-between items-center w-full bg-gray-100">
             <div className="ml-4">{start}</div>
-            <InputText value={searchValue} type="text" placeholder="Search" onChange={searchHandler} className="p-inputtext-sm w-64 placeholder-custom" />
-            <div className="mr-4">
+            {/* <InputText value={searchValue} type="text" placeholder="Search" onChange={searchHandler} className="p-inputtext-sm w-64 placeholder-custom" /> */}
+            <div className="mr-10 md:mr-4">
                 <Menubar model={items} className="justify-end" />
             </div>
         </div>

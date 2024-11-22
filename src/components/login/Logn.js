@@ -3,7 +3,6 @@ import loginImg from "../../assets/loginImg.jpg";
 import { InputText } from "primereact/inputtext";
 import { Button } from "primereact/button";
 import LoginContext from "../store/loginCentext";
-import { useNavigate } from "react-router-dom";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -19,7 +18,6 @@ const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPass, setShowConfirmPass] = useState(false);
   const ctx = useContext(LoginContext);
-  const navigate = useNavigate();
 
   const emailHandler = (e) => {
     const emailValue = e.target.value;
@@ -113,7 +111,7 @@ const Login = () => {
       <img
         src={loginImg}
         alt="loginImage"
-        className="w-1/2 h-full object-cover"
+        className="w-1/2 h-full object-cover hidden md:block"
       />
       <div className="flex items-center justify-center w-1/2">
         <form className="space-y-4 w-3/4 max-w-sm" onSubmit={submitHandler}>
