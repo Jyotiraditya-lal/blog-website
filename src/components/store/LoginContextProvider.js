@@ -46,15 +46,29 @@ const LoginContextProvider = ({ children }) => {
     }
   };
 
-  const logoutHandler = () => {
+  const logoutHandler = (from) => {
     localStorage.removeItem("isLoggedin");
     localStorage.removeItem('loggedinUser')
     setIsLoggedin(false);
-    toast.current.show({
-      severity: "info",
-      summary: "Logged Out",
-      detail: "You have successfully logged out.",
-    });
+    if(from==='navbar'){
+      toast.current.show({
+        severity: "info",
+        summary: "Logged Out",
+        detail: "You have successfully logged out.",
+      });
+    }else if(from==='delete'){
+      toast.current.show({
+        severity: "info",
+        summary: 'Deleted successfully',
+        detail: 'User deleted successfully'
+      })
+    }else{
+      toast.current.show({
+        severity: "info",
+        summary: 'Password successfully changed',
+        detail: 'Password was successfully changed'
+      })
+    }
     navigate('/')
   };
 
@@ -65,11 +79,7 @@ const LoginContextProvider = ({ children }) => {
     const updatedUsers=users.filter(user=>user.id!==id)
     localStorage.setItem('users',JSON.stringify(updatedUsers))
     
-    toast.current.show({
-      severity: "info",
-      summary: "Feature Coming Soon",
-      detail: `Delete account functionality for ID: ${id} is under development.`,
-    });
+    logoutHandler('delete')
   };
 
   const addUserHandler=(user)=>{

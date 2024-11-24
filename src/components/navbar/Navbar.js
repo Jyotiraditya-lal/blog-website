@@ -41,7 +41,7 @@ const NavBar = () => {
                         {
                             label: 'logout',
                             icon: 'pi pi-sign-out',
-                            command: ()=>{ctx.logout()}
+                            command: ()=>{ctx.logout('navbar')}
                         }
                     ]
                 }

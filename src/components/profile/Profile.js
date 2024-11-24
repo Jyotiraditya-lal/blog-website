@@ -1,10 +1,16 @@
 import React from "react";
+import NavBar from "../navbar/Navbar";
+import EditProfileSection from "./editProfileSection/EditProfileSection";
 
-const Profile=()=>{
+const Profile = () => {
 
-    return(
-        <h1>Profile page</h1>
-    )
-}
+  return (
+    <React.Fragment>
+      <NavBar />
 
-export default Profile
+      <EditProfileSection />
+    </React.Fragment>
+  );
+};
+
+export default Profile;
