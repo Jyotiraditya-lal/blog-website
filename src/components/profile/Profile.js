@@ -1,6 +1,7 @@
 import React from "react";
 import NavBar from "../navbar/Navbar";
 import EditProfileSection from "./editProfileSection/EditProfileSection";
+import ProfileBlogSection from "./blogSection/BlogSection";
 
 const Profile = () => {
 
@@ -9,6 +10,7 @@ const Profile = () => {
       <NavBar />
 
       <EditProfileSection />
+      <ProfileBlogSection />
     </React.Fragment>
   );
 };
