@@ -348,7 +348,7 @@ const EditProfileSection = () => {
                   icon: "pi pi-trash",
                   defaultFocus: "accept",
                   accept: () => {
-                    ctx.logout(user.id);
+                    ctx.deleteAccount(user.id);
                   },
                   acceptClassName:
                     "bg-blue-700 hover:bg-blue-600 ml-3 px-2 py-1 text-white",
